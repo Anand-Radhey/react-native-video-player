@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   video: {
-    backgroundColor: 'black',
+//    backgroundColor: 'black',
   },
   controls: {
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
@@ -87,7 +87,7 @@ export default class VideoPlayer extends Component {
     super(props);
 
     this.state = {
-      isStarted: props.autoplay,
+      isStarted: props.autostart || props.autoplay,
       isPlaying: props.autoplay,
       width: 200,
       progress: 0,
@@ -455,6 +455,7 @@ VideoPlayer.propTypes = {
   videoWidth: PropTypes.number,
   videoHeight: PropTypes.number,
   duration: PropTypes.number,
+  autostart: PropTypes.bool,
   autoplay: PropTypes.bool,
   defaultMuted: PropTypes.bool,
   muted: PropTypes.bool,
@@ -490,6 +491,7 @@ VideoPlayer.propTypes = {
 VideoPlayer.defaultProps = {
   videoWidth: 1280,
   videoHeight: 720,
+  autostart: false,
   autoplay: false,
   controlsTimeout: 2000,
   loop: false,
