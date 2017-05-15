@@ -2,6 +2,18 @@ import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Image, TouchableOpacity, Platform } from 'react-native';
 import Video from 'react-native-video'; // eslint-disable-line
 
+class Icon extends Component {
+  static propTypes = {
+    ...View.propTypes,
+    name: PropTypes.string.isRequired,
+    size: PropTypes.number.isRequired,
+  };
+
+  render() {
+    return <Image source={require(`${this.props.name}.png`)} style={[...this.props.style, {height: this.props.size, width: this.props.size}]} />;
+  }
+}
+
 const styles = StyleSheet.create({
   preloadingPlaceholder: {
     backgroundColor: 'black',
@@ -498,14 +510,3 @@ VideoPlayer.defaultProps = {
   customStyles: {},
 };
 
-class Icon extends Component {
-  static propTypes = {
-    ...View.propTypes,
-    name: PropTypes.string.isRequired,
-    size: PropTypes.number.isRequired,
-  }
-
-  render() {
-    return <Image source={require(`${this.props.name}.png`)} style={[...this.props.style, {height: this.props.size, width: this.props.size}]} />;
-  }
-}
