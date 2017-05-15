@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { View, StyleSheet, Image, TouchableOpacity, Platform } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import Video from 'react-native-video'; // eslint-disable-line
 
 const styles = StyleSheet.create({
@@ -498,3 +497,15 @@ VideoPlayer.defaultProps = {
   resizeMode: 'contain',
   customStyles: {},
 };
+
+class Icon extends Component {
+  static propTypes = {
+    ...View.propTypes,
+    name: PropTypes.string.isRequired,
+    size: PropTypes.number.isRequired,
+  }
+
+  render() {
+    return <Image source={require(`${this.props.name}.png`)} style={[...this.props.style, {height: this.props.size, width: this.props.size}]} />;
+  }
+}
